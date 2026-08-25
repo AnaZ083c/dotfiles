@@ -28,7 +28,7 @@ This repo also includes configs used to create a development enviroment (for Ubu
 ## Table of Contents
 1. [Neovim setup](#1-neovim)
     - [How-To-Use guide for this specific config](./.config/nvim/README.md)
-3. [Tmux and Tmuxifier setup](#2-tmux)
+3. [Tmux and Automux setup](#2-tmux)
 4. [i3 Window Manager](#3-i3-window-manager)
     - [Configuring low battery level notification](./.config/i3/README.md)
 5. [Sources](#sources)
@@ -81,11 +81,14 @@ nvim ~/.config/nvim/lua/core/plugins.lua
 :PackerSync
 # This is to ensure all plugins are installed and up to date
 ```
-**NOTE:** The first run might take a while because the plugins are auto-installing and you might get some error messages displayed, but that's okay.
+
+> [!NOTE]
+> The first run might take a while because the plugins are auto-installing and you might get some error messages displayed, but that's okay.
 
 Once everything is done installing (you should see a list of packages on the left side pane). When you get that, simply quit neovim, reopen it, and run `:PackerSync` to make sure all packages are installed and up to date.
 
-**NOTE:** To get you started with using this specific NeoVim config, this [How-To-Use guide for this specific config](./.config/nvim/README.md) may come in handy.
+> [!NOTE]
+> To get you started with using this specific NeoVim config, this [How-To-Use guide for this specific config](./.config/nvim/README.md) may come in handy.
 
 ## 2. Tmux
 **Install tmux**
@@ -116,20 +119,34 @@ Ctrl+s+I  # To install all plugins
 Ctrl+s+r  # Source tmux (refresh)
 ```
 
-### Tmuxifier
-Tmuxifier repo - https://github.com/jimeh/tmuxifier
+### Automux
+Automux repo - https://github.com/AnaZ083c/automux
 
 **1. Install:**
 ```shell
-git clone https://github.com/jimeh/tmuxifier.git ~/.tmuxifier
+git clone https://github.com/AnaZ083c/automux.git ~/.automux
 ```
-For additional how-tos for tmuxifier, either visit the official repo for docs or follow the video tutorial listed among the sources below.
+For additional how-tos for automux, see the repo page.
 
-**2. Add configs to your shell (.zshrc, .bashrc - depending on the shell you're using):**
+**2. Build automux binary**
+
+```shell
+cd ~/.automux
+python3.12 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+# Build
+make build
+```
+
+**3. Add configs to your shell (.zshrc, .bashrc - depending on the shell you're using):**
 ```shell
 export EDITOR='nvim'
-export PATH="$HOME/.tmuxifier/bin:$PATH"
-eval "$(tmuxifier init -)"
+export PATH="$HOME/.automux/dist:$PATH"
+
+# save and quit then source the shell session (refresh)
+automux --init
 ```
 
 ## 3. i3 Window Manager
@@ -146,7 +163,10 @@ That's to make your desktop environment not as dependant on mouse clicking as th
 | rofi | window switcher, app launcher and dmenu replacement |
 | blueman | for bluetooth support (requires bluez and bluez-obexd) |
 
-**Note**: you'll also need to install a `CodeNewRoman Nerd Font Mono` to make all the icons work properly.
+
+> [!NOTE]
+> you'll also need to install a `CodeNewRoman Nerd Font Mono` to make all the icons work properly.
+
 
 ### 1. install i3
 ```shell
@@ -202,10 +222,9 @@ cp path-to-this-repo/.config/rofi ~/.config/
 ### TMUX config
 1. Make tmux great again: https://youtu.be/H70lULWJeig 
 2. Tmux plugins: https://youtu.be/qyV_hOtMdwg
-3. Tmuxifier: https://www.youtube.com/watch?v=ceRYL271cao
 
-### Tmuxifier repo
-- https://github.com/jimeh/tmuxifier
+### Automux repo
+- https://github.com/AnaZ083c/automux
 
 ### i3 docs
 1. Installation guide: https://i3wm.org/docs/repositories.html
