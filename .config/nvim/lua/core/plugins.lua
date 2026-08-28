@@ -22,21 +22,29 @@ return require('packer').startup(function(use)
   use 'rafalbromirski/vim-aurora'
   use 'yonlu/omni.vim'
   use { "catppuccin/nvim", as = "catppuccin" }
+  use { 'NTBBloodbath/doom-one.nvim' }
 
   -- misc 
   use 'nvim-tree/nvim-tree.lua'
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
-  use 'nvim-treesitter/nvim-treesitter'
-  -- use {'tzachar/cmp-ai', requires = {'nvim-lua/plenary.nvim'}}  -- AI completion (ollama)
-  -- use {'hrsh7th/nvim-cmp', requires = {'tzachar/cmp-ai'}}
-  use {'hrsh7th/nvim-cmp'}
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
+    run = ':TSUpdate',
+  }
+  use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
   use 'rafamadriz/friendly-snippets'
-  use { 'nvim-telescope/telescope.nvim', tag = '0.1.5',
-    requires = { {'nvim-lua/plenary.nvim'} }
+  use {
+    'nvim-telescope/telescope.nvim',
+    tag = 'v0.2.2',
+    requires = {
+      {'nvim-lua/plenary.nvim'},
+      {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
+    }
   }
   use {
       "ThePrimeagen/harpoon",
@@ -83,24 +91,25 @@ return require('packer').startup(function(use)
   use "lewis6991/gitsigns.nvim"
   use "terrortylor/nvim-comment"
 
-  -- Markdown renderer
-  use {
-    'MeanderingProgrammer/render-markdown.nvim',
-    after = { 'nvim-treesitter' },
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-    config = function()
-      require('render-markdown').setup({})
-    end
-  }
-
   -- DAP - debuggers
   use "mfussenegger/nvim-dap"
   use 'mfussenegger/nvim-dap-python'
   use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } }
   use 'theHamsta/nvim-dap-virtual-text'
+  -- use {
+  --   'Joakker/lua-json5',
+  --   run = './install.sh'
+  -- }
 
-  -- AI - a local copilot
-  use { "David-Kunz/gen.nvim" }
+  -- AI - copilot
+  use "github/copilot.vim"
+  use {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      branch = "master",
+    },
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

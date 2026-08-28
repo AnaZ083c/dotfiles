@@ -14,6 +14,7 @@ require("mason-lspconfig").setup({
     "autotools_ls",
     "marksman",
     "jedi_language_server",
+    "jinja_lsp",
     "vimls",
     "terraformls",
     "regols"
@@ -39,7 +40,8 @@ end)
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- After setting up mason-lspconfig you may set up servers via lspconfig
-require("lspconfig").lua_ls.setup {
+
+vim.lsp.enable("lua_ls", {
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
@@ -47,27 +49,29 @@ require("lspconfig").lua_ls.setup {
       globals = { "vim" },
     },
   }
-}
-require("lspconfig").ansiblels.setup {
+})
+
+vim.lsp.enable("ansiblels", {
   on_attach = on_attach,
   capabilities = capabilities,
-}
-require("lspconfig").bashls.setup {
+})
+vim.lsp.enable("bashls", {
   on_attach = on_attach,
   capabilities = capabilities,
-}
-require("lspconfig").clangd.setup { capabilities = capabilities,}
-require("lspconfig").cssls.setup {  capabilities = capabilities,}
-require("lspconfig").dockerls.setup {  capabilities = capabilities,}
-require("lspconfig").docker_compose_language_service.setup {  capabilities = capabilities,}
-require("lspconfig").gopls.setup { on_attach = on_attach, capabilities = capabilities,}
-require("lspconfig").html.setup {  capabilities = capabilities,}
-require("lspconfig").jsonls.setup {  capabilities = capabilities,}
-require("lspconfig").autotools_ls.setup {  capabilities = capabilities,}
-require("lspconfig").marksman.setup {  capabilities = capabilities,}
-require("lspconfig").jedi_language_server.setup { on_attach = on_attach, capabilities = capabilities,}
-require("lspconfig").vimls.setup {  capabilities = capabilities,}
-require("lspconfig").terraformls.setup {  capabilities = capabilities,}
-require("lspconfig").regols.setup {  capabilities = capabilities,}
-require("lspconfig").ansiblels.setup {  capabilities = capabilities,}
+})
+vim.lsp.enable("clangd", { capabilities = capabilities,})
+vim.lsp.enable("cssls", {  capabilities = capabilities,})
+vim.lsp.enable("dockerls", {  capabilities = capabilities,})
+vim.lsp.enable("docker_compose_language_service", {  capabilities = capabilities,})
+vim.lsp.enable("gopls", { on_attach = on_attach, capabilities = capabilities,})
+vim.lsp.enable("html", {  capabilities = capabilities,})
+vim.lsp.enable("jsonls", {  capabilities = capabilities,})
+vim.lsp.enable("autotools_ls", {  capabilities = capabilities,})
+vim.lsp.enable("marksman", {  capabilities = capabilities,})
+vim.lsp.enable("jedi_language_server", { on_attach = on_attach, capabilities = capabilities,})
+vim.lsp.enable("jinja_lsp", { on_attach = on_attach, capabilities = capabilities,})
+vim.lsp.enable("vimls", {  capabilities = capabilities,})
+vim.lsp.enable("terraformls", {  capabilities = capabilities,})
+vim.lsp.enable("regols", {  capabilities = capabilities,})
+vim.lsp.enable("ansiblels", {  capabilities = capabilities,})
 

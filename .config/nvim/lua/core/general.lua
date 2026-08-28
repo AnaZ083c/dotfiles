@@ -16,9 +16,11 @@ vim.opt.list = true
 vim.opt.listchars:append({
   tab = "| ",
   trail = "·",
-  eol = "↩"
+  eol = "↩",
 })
 
+-- show max line length guideline
+vim.opt.colorcolumn = "89"
 -- use spaces for tabs, etc.
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
@@ -40,3 +42,12 @@ vim.api.nvim_set_keymap('n', '<leader>h', ':vertical resize -10<CR>', { noremap=
 
 vim.api.nvim_set_keymap('n', '<leader>j', ':resize +10<CR>', { noremap=true, silent=true })
 vim.api.nvim_set_keymap('n', '<leader>k', ':resize -10<CR>', { noremap=true, silent=true })
+
+-- toggle relative line numbers
+-- local is_relative_line_numbers = vim.opt.relativenumber
+-- vim.keymap.set('n', '<leader>Rn', function ()
+--   vim.opt.relativenumber = not is_relative_line_numbers
+-- end)
+
+-- copilot
+vim.g.copilot_enabled = 0
