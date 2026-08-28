@@ -1,1 +1,1 @@
-require("core.plugin_config.ai.gen")
+-- require("core.plugin_config.ai.copilot_chat")
