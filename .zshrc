@@ -100,6 +100,16 @@ export NVM_DIR="$HOME/.nvm"
 # custom scripts
 export PATH=$PATH:"$HOME/.config/custom-scripts"
 
+# custom scripts -> git-tools
+export PATH=$PATH:"$HOME/GitHub/forks/my/git-tools/dist"
+export PATH=$PATH:"$HOME/GitHub/repos/my/automux/dist"
+
+# OpenShift CLI
+export PATH=$PATH:"$HOME/openshift"
+
+# Xcursor themes
+# export XCURSOR_PATH=${XCURSOR_PATH}:"/usr/share/icons"
+
 # Doom Emacs
 export PATH=$PATH:"$HOME/.config/emacs/bin"
 
@@ -162,7 +172,21 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias emacs="emacsclient -c -a 'emacs'"
+# Copilot CLI
+# GitLab
+export GITLAB_TOKEN=$(awk -F "=" '/copilot_token/ {print $2}' "$HOME/.config/git/.tokens")
+
+# alias emacs="emacsclient -c -a 'emacs'"
+# alias emacs="emacs -nw"
+alias wezterm='flatpak run org.wezfurlong.wezterm'
+
+alias activate="source .venv/bin/activate"
+alias dcup="docker compose up"
+alias dcdown="docker compose down"
+
+# ollama start/stop
+alias ollama_start="systemctl start ollama.service"
+alias ollama_stop="systemctl stop ollama.service"
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
