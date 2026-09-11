@@ -148,7 +148,7 @@ configuration {
   modi: "run,drun,window";
   icon-theme: "Oranchelo";
   show-icons: true;
-  terminal: "rofi-sensible-terminal";
+  terminal: "alacritty";
   drun-display-format: "{icon} {name}";
   location: 0;
   disable-history: false;
@@ -160,14 +160,23 @@ configuration {
   sidebar-mode: true;
 }
 
-@theme "catppuccin-macchiato"
+@theme "gruvbox-dark"
 
 * {
-  font: "SauceCodePro Nerd Font Medium 12";
+  // font: "SauceCodePro Nerd Font Medium 12";
+  font: "JetBrainsMono Nerd Font Propo 13";
 }
 
 window {
   border: 2px;
-  // border-radius: 6px;
-  border-color: #b7bdf8;
+  border-radius: 6px;
+  border-color: #98971a;
+  width: 35%;
+  height: 35%;
+}
+
+listview {
+  lines: 4;
+  columns: 2;
+  flow: horizontal;
 }
