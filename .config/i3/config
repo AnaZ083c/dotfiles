@@ -11,41 +11,56 @@
 
 # mod = Alt
 # sup = WinKey (or System)
+### Define keys
 set $mod Mod1
 set $sup Mod4
+##
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:SauceCodePro Nerd Font Medium 12
+# font pango:SauceCodePro Nerd Font Medium 12
+# font pango:CodeNewRoman NerdFontPropo Regular 12
+font pango:JetBrainsMono Nerd Font Propo 12
 
 # Catppuccin theme
 # Macchiato
-set $rosewater #f4dbd6
-set $flamingo #f0c6c6
-set $pink #f5bde6
-set $mauve #c6a0f6
-set $red #ed8796
-set $maroon #ee99a0
-set $peach #f5a97f
-set $yellow #eed49f
-set $green #a6da95
-set $teal #8bd5ca
-set $sky #91d7e3
-set $sapphire #7dc4e4
-set $blue #8aadf4
-set $lavender #b7bdf8
-set $text #cad3f5
-set $subtext1 #b8c0e0
-set $subtext0 #a5adcb
-set $overlay2 #939ab7
-set $overlay1 #8087a2
-set $overlay0 #6e738d
-set $surface2 #5b6078
-set $surface1 #494d64
-set $surface0 #363a4f
-set $base #24273a
-set $mantle #1e2030
-set $crust #181926
+# set $rosewater #f4dbd6
+# set $flamingo #f0c6c6
+# set $pink #f5bde6
+# set $mauve #c6a0f6
+# set $red #ed8796
+# set $maroon #ee99a0
+# set $peach #f5a97f
+# set $yellow #eed49f
+# set $green #a6da95
+# set $teal #8bd5ca
+# set $sky #91d7e3
+# set $sapphire #7dc4e4
+# set $blue #8aadf4
+# set $lavender #b7bdf8
+# set $text #cad3f5
+# set $subtext1 #b8c0e0
+# set $subtext0 #a5adcb
+# set $overlay2 #939ab7
+# set $overlay1 #8087a2
+# set $overlay0 #6e738d
+# set $surface2 #5b6078
+# set $surface1 #494d64
+# set $surface0 #363a4f
+# set $base #24273a
+# set $mantle #1e2030
+# set $crust #181926
+#
+# Gruvbox theme
+set $bg #282828ff
+set $red #cc241dff
+set $green #98971aff
+set $yellow #d79921ff
+set $blue #458588ff
+set $purple #b16286ff
+set $aqua #689d68ff
+set $gray #a89984ff
+set $darkgray #1d2021ff
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -60,7 +75,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 000000 --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -84,25 +99,31 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 
-# Screenshot selection to clipboard
+## Screenshot selection to clipboard
 bindsym $mod+Shift+s exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
-
+##
 
 # Use Mouse+$mod to drag floating windows to their wanted position
+## Drag floating window with a mouse while this key
 floating_modifier $mod
+##
 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
-# start a terminal
+## Open a terminal
+bindsym $sup+t exec alacritty
+##
+
 # bindsym $sup+Return exec "flatpak run org.wezfurlong.wezterm"
 
 # start default terminal
-bindsym $sup+Return exec i3-sensible-terminal
+# bindsym $sup+Return exec i3-sensible-terminal
 
-# kill focused window
+## Kill focused window
 bindsym $mod+Shift+q kill
+##
 
 # start dmenu (a program launcher)
 # nb: normal background
@@ -110,65 +131,85 @@ bindsym $mod+Shift+q kill
 # sb: selected background
 # sf: selected foreground
 # bindsym $mod+d exec --no-startup-id dmenu_run -nb "#24273a" -nf "#cad3f5" -sb "#8aadf4" -sf "#24273a" -fn "SauceCodePro Nerd Font Medium"
+## Open rofi
 bindcode $mod+40 exec "rofi -show drun"
-# A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
+##
 
-# change focus
+## Focus window on left
 bindsym $mod+h focus left
+##
+## Focus window below
 bindsym $mod+j focus down
+##
+## Focus window on top
 bindsym $mod+k focus up
+##
+## Focus window on right
 bindsym $mod+l focus right
+##
 
-# alternatively, you can use the cursor keys:
+## Focus window on left
 bindsym $mod+Left focus left
+##
+## Focus window below
 bindsym $mod+Down focus down
+##
+## Focus window above
 bindsym $mod+Up focus up
+##
+## Focus window on right
 bindsym $mod+Right focus right
+##
 
-# move focused window
+# Move focused window using h, j, k, l
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
+##
 
-# alternatively, you can use the cursor keys:
+## Move focused windows using left, right, up, down
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+##
 
-# split in horizontal orientation
+## Split in horizontal orientation
 bindsym $mod+Shift+ccaron split h
+##
 
-# split in vertical orientation
+## Split in vertical orientation
 bindsym $mod+Shift+v split v
+##
 
-# enter fullscreen mode for the focused container
+## Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+##
 
-# change container layout (stacked, tabbed, toggle split)
+## Change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
+##
 
-# toggle tiling / floating
+## toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
+## Change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
+##
 
-# focus the parent container
+## Focus the parent container
 bindsym $mod+a focus parent
+##
 
 # focus the child container
 #bindsym $mod+d focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
+### Define workspaces
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -179,8 +220,9 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+##
 
-# switch to workspace
+## Switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
@@ -191,8 +233,9 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+##
 
-# move focused container to workspace
+## Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
@@ -203,15 +246,23 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+##
 
-# reload the configuration file
+## Reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+##
+
+## Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
+##
+
+## Exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-# lock screen
+##
+
+## Lock screen
 bindsym $mod+Control+Return exec "i3lock -c 000000 -t -f -e"
+##
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -221,10 +272,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
+
+        ## Resize width
         bindsym h resize shrink width 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+        ##
+
+        ## Resize height
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        ##
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -233,17 +290,30 @@ mode "resize" {
         bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape or $mod+r
+        ## Apply resize
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
+        ##
 }
 
+## Resize mode for active window
 bindsym $mod+r mode "resize"
+##
 
 # Start picom
-### for opacity in termianl, etc. (fancy ram eating stuff)
-### NOTE: uncomment if you're sure your PC/laptop can handle it
-# exec_always --no-startup-id picom --experimental-backend
+#### for opacity in termianl, etc. (fancy ram eating stuff)
+#### NOTE: enable if you're sure your PC can handle it
+exec_always --no-startup-id picom
+
+# Start Conky
+exec_always --no-startup-id conky
+
+# Adjust keyboard repeat rate
+exec_always --no-startup-id xset r rate 200 35
+
+# Disable using caps lock (the most useless key in the world)
+exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 
 # ----- Multiple monitor configs
 # Multiple displays
@@ -271,44 +341,33 @@ exec --no-startup-id teams-for-linux
 ########
 # THEME
 ########
-# set primary gruvbox colorscheme colors
-# set $bg #282828ff
-# set $red #cc241dff
-# set $green #98971aff
-# set $yellow #d79921ff
-# set $blue #458588ff
-# set $purple #b16286ff
-# set $aqua #689d68ff
-# set $gray #a89984ff
-# set $darkgray #1d2021ff
-
-
 # ------- Customize border colors
 # green gruvbox
-# class                 border  backgr. text    indicator child_border
-#client.focused          $green $green $darkgray $purple $darkgray
-#client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
-#client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
-#client.urgent           $red $red $white $red $red
+# target                 title     bg    text   indicator  border
+client.focused          $green $darkgray $yellow $green $darkgray
+client.focused_inactive $darkgray $darkgray $yellow $yellow $darkgray
+client.unfocused        $darkgray $darkgray $yellow $yellow $darkgray
+client.urgent           $red $red $white $red $red
+client.placeholder      $darkgray $darkgray $yellow $yellow $darkgray
+client.background       $darkgray
 
 # blue gruvbox
-# class                 border|backgr|text|indicator|child_border
-# client.focused          $blue $blue $darkgray $purple $darkgray
+# target                    title     bg    text   indicator  border
+# client.focused          $blue $darkgray $yellow $purple $darkgray
 # client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
 # client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
 # client.urgent           $red $red $white $red $red
-#
+# client.placeholder      $darkgray $darkgray $yellow $darkgray $darkgray
 # client.background       $darkgray
 
-
-
-# target                 title     bg    text   indicator  border
-client.focused           $lavender $base $text  $rosewater $lavender
-client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
-client.unfocused         $overlay0 $base $text  $rosewater $overlay0
-client.urgent            $peach    $base $peach $overlay0  $peach
-client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
-client.background        $base
+# Catppuccin
+# target                    title     bg    text   indicator  border
+# client.focused           $lavender $base $text  $rosewater $lavender
+# client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+# client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+# client.urgent            $peach    $base $peach $overlay0  $peach
+# client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+# client.background        $base
 # ------- END
 
 # ------- Gaps
@@ -319,24 +378,35 @@ client.background        $base
 # for a total gap of 10px to the screen edges, and 5px between windows.
 # gaps outer 5  # was set
 
+# hide border (title bar)
+# for_window [class=".*"] title_format "---"
+
 # this was not set
 # Overwrite gaps to 0, I need all the space I can get on workspace 3.
-#workspace 3 gaps inner 0
-#workspace 3 gaps outer 0
+# workspace 3 gaps inner 0
+# workspace 3 gaps outer 0
 
 # Only enable outer gaps when there is exactly one window or split container on the workspace.
 smart_gaps inverse_outer
 # ------ END
 
+# Make image viewer a floating window by default
+for_window[class="Eog"] floating enable
+for_window[class="Gitk"] floating enable
+for_window[class="Blueman-manager"] floating enable
+
 # ------- Scratchpad
-# Make the currently focused window a scratchpad
+## Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
+##
 
-# Show the first scratchpad window
+## Show the first scratchpad window
 bindsym $mod+minus scratchpad show
+##
 
-# Show the sup-mail scratchpad window, if any.
+## Show the sup-mail scratchpad window, if any.
 bindsym mod4+s [title="^Sup ::"] scratchpad show
+##
 # ------ END
 
 # --------- Power menu 
@@ -349,7 +419,19 @@ mode "exit: [0]lock, [1]logout, [2]reboot, [3]shutdown" {
   bindsym Return mode "default"
 }
 
-bindsym $mod+x mode "exit: [0]lock, [1]logout, [2]reboot, [3]shutdown"
+mode "refresh: [0]displays, [1]conky, [2]zshell" {
+  bindsym 0 exec $HOME/.config/i3/display.sh
+  bindsym 1 exec killall conky && conky > /dev/null 2>&1 &
+  bindsym 2 exec source ~/.zshrc
+  bindsym Escape mode "default"
+  bindsym Return mode "default"
+}
+
+bindsym $mod+$sup+c mode "refresh: [0]displays, [1]conky, [2]zshell"
+
+## Show power menu
+bindsym $mod+$sup+x mode "exit: [0]lock, [1]logout, [2]reboot, [3]shutdown"
+##
 # ---- END
 
 # keyboard language menu
@@ -359,7 +441,11 @@ mode "keyboard: [0]si, [1]us" {
   bindsym Escape mode "default"
   bindsym Return mode "default"
 }
+## Open keyboard language menu
 bindsym $mod+y mode "keyboard: [0]si, [1]us"
+##
+
+# exec_always --no-startup-id "$HOME/.config/polybar/launch.sh"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -369,19 +455,35 @@ bar {
   # i3bar_command i3bar --transparency
   tray_padding 6
   separator_symbol "  "
-  # "󰇥" 
-  # ""
+  position bottom
 
+  # Catppuccin
+  # colors {
+  #   background         $base
+  #   statusline         $text
+  #   separator          $surface1
+  #   # focused_statusline $text
+  #   # focused_separator  $base
+  #   focused_workspace  $base $green    $base
+  #   active_workspace   $base $blue     $base
+  #   inactive_workspace $base $base     $text
+  #   urgent_workspace   $base $red      $base
+  #   binding_mode       $base $mauve    $base
+  # }
+
+  # Gruvbox
   colors {
-    background         $base
-    statusline         $text
-    separator          $surface1
-    # focused_statusline $text
-    # focused_separator  $base
-    focused_workspace  $base $green    $base
-    active_workspace   $base $blue     $base
-    inactive_workspace $base $base     $text
-    urgent_workspace   $base $red      $base
-    binding_mode       $base $mauve    $base
+    # bar background color
+    background $bg
+    # text color used for blocks that do not have a color specified.
+    statusline $yellow
+    separator  $darkgreen
+    # workspaces section            
+    #                    border  backgr. text
+    focused_workspace    $aqua $aqua $darkgray
+    inactive_workspace   $darkgray $darkgray $yellow
+    active_workspace     $darkgray $darkgray $yellow
+    urgent_workspace     $red $red $bg
+    binding_mode         $aqua $darkgray    $green
   }
 }

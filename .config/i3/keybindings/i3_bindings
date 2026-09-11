@@ -1,0 +1,64 @@
+Screenshot selection to clipboard: Alt+Shift+s
+Drag floating window with a mouse while this key: Alt
+Open a terminal: System+t
+Kill focused window: Alt+Shift+q
+Open rofi: Alt+40
+Focus window on left: Alt+h
+Focus window below: Alt+j
+Focus window on top: Alt+k
+Focus window on right: Alt+l
+Focus window on left: Alt+Left
+Focus window below: Alt+Down
+Focus window above: Alt+Up
+Focus window on right: Alt+Right
+Move focused windows using left, right, up, down: Alt+Shift+Left
+Move focused windows using left, right, up, down: Alt+Shift+Down
+Move focused windows using left, right, up, down: Alt+Shift+Up
+Move focused windows using left, right, up, down: Alt+Shift+Right
+Split in horizontal orientation: Alt+Shift+ccaron
+Split in vertical orientation: Alt+Shift+v
+Enter fullscreen mode for the focused container: Alt+f
+Change container layout (stacked, tabbed, toggle split): Alt+s
+Change container layout (stacked, tabbed, toggle split): Alt+w
+Change container layout (stacked, tabbed, toggle split): Alt+e
+toggle tiling / floating: Alt+Shift+space
+toggle tiling / floating: Alt+space
+Change focus between tiling / floating windows: Alt+space
+Focus the parent container: Alt+a
+Switch to workspace: Alt+1
+Switch to workspace: Alt+2
+Switch to workspace: Alt+3
+Switch to workspace: Alt+4
+Switch to workspace: Alt+5
+Switch to workspace: Alt+6
+Switch to workspace: Alt+7
+Switch to workspace: Alt+8
+Switch to workspace: Alt+9
+Switch to workspace: Alt+0
+Move focused container to workspace: Alt+Shift+1
+Move focused container to workspace: Alt+Shift+2
+Move focused container to workspace: Alt+Shift+3
+Move focused container to workspace: Alt+Shift+4
+Move focused container to workspace: Alt+Shift+5
+Move focused container to workspace: Alt+Shift+6
+Move focused container to workspace: Alt+Shift+7
+Move focused container to workspace: Alt+Shift+8
+Move focused container to workspace: Alt+Shift+9
+Move focused container to workspace: Alt+Shift+0
+Reload the configuration file: Alt+Shift+c
+Restart i3 inplace (preserves your layout/session, can be used to upgrade i3): Alt+Shift+r
+Exit i3 (logs you out of your X session): Alt+Shift+e
+Lock screen: Alt+Control+Return
+Resize width: h
+Resize width: l
+Resize height: j
+Resize height: k
+Apply resize: Return
+Apply resize: Escape
+Apply resize: Alt+r
+Resize mode for active window: Alt+r
+Make the currently focused window a scratchpad: Alt+Shift+minus
+Show the first scratchpad window: Alt+minus
+Show the sup-mail scratchpad window, if any.: Alt+Shift+s
+Show power menu: Alt+x
+Open keyboard language menu: Alt+y
